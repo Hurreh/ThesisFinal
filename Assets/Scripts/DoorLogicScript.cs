@@ -16,17 +16,12 @@ public class DoorLogicScript : MonoBehaviour
 
     void Start()
     {
-        if (GameLogicScript.current != null && doorCount == 1)
+        if (GameLogicScript.current is not null && doorCount == 1)
         {
             GameLogicScript.current.onRiddlesSolvedEvent += activatePortal;
         }
         
 
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,7 +36,7 @@ public class DoorLogicScript : MonoBehaviour
     {
         if (doorCount == 1)
         {
-            if (material != null)
+            if (material is not null)
             {
                 material.materials[0].color = Color.green;
             }

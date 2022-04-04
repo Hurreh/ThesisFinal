@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class MapDisplay : MonoBehaviour
 {
@@ -9,14 +10,14 @@ public class MapDisplay : MonoBehaviour
 
     public void DrawMesh(MeshData mesh, Texture2D texture)
     {
-        Shader shader;
         Color color = Color.gray;
 
         GameObject room = new GameObject();
-        room.name = "room";
+        room.name = "roomMesh";
         room.tag = "room";
         room.AddComponent<MeshFilter>();
         room.AddComponent<MeshRenderer>();
+        room.AddComponent<MeshCollider>();
         
         
         Renderer mat = room.GetComponent<Renderer>();

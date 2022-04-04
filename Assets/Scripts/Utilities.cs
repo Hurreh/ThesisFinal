@@ -151,6 +151,7 @@ public static class Utilities
         }
         return room;
     }
+    //fill array with data.
     public static bool[,] PopulateArray(bool[,] array)
     {
         for (int x = 0; x < array.GetLength(0); x++)
@@ -162,6 +163,7 @@ public static class Utilities
         }
         return array;
     }
+    //Widen a generated map by one each direction.
     public static bool[,] Thickener(bool[,] map, int amount)
     {
 
@@ -336,21 +338,17 @@ public class Dungeon
 {
     public int DungeonSizeX { get; set; }
     public int DungeonSizeY { get; set; }
-    public int RoomDensity { get; set; }
     public int maxRoomSizeX { get; set; }
     public int maxRoomSizeY { get; set; }
-    //size bias determines whether a lot of smaller rooms or fewer bigger rooms will be generated.
-    public int sizeBias { get; set; }
     public int minimalRoomSize { get; set; }
-    public Dungeon(int dungeonSizeX, int dungeonSizeY, int roomDensity, int maxRoomSizeX, int maxRoomSizeY, int sizeBias, int minimalRoomSize)
+    public Dungeon(int dungeonSizeX, int dungeonSizeY, int maxRoomSizeX, int maxRoomSizeY, int minimalRoomSize)
     {
         this.DungeonSizeX = dungeonSizeX;
         this.DungeonSizeY = dungeonSizeY;
 
         this.maxRoomSizeX = maxRoomSizeX;
         this.maxRoomSizeY = maxRoomSizeY;
-        this.sizeBias = sizeBias;
-        this.RoomDensity = roomDensity;
+
         this.minimalRoomSize = minimalRoomSize;
     }
 

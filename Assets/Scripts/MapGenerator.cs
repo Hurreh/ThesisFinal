@@ -8,7 +8,7 @@ public class MapGenerator : MonoBehaviour
 {
     private void Start()
     {
-        if (GameLogicScript.current != null)
+        if (GameLogicScript.current is not null)
         {
             GameLogicScript.current.loadNextRoundEvent += DrawMapInEditor;
         }
@@ -24,22 +24,21 @@ public class MapGenerator : MonoBehaviour
         DiffusionLimitedAlgorithm,
         DiffusionLimitedAlgorithmWithCentralAttractor,
         RandomWalkAlgorithm,
-        RandomRoomPlacement
     }
     public GenerationMode generationMode;
     public AlgorithmType algorithmType;
     public int dungeonSizeX;
     public int dungeonSizeY;
-    [Range(0,100)]
-    public int roomDensity;
     public int maxRoomSizeX;
     public int maxRoomSizeY;
+    [Range(3,8)]
     public int minimalRoomSize;
-    [Range(300,15000)]
+    [Range(300,600)]
     public int iterations;
     
     public void DrawMapInEditor()
-    { 
+    {
+        
         Texture2D texture = new Texture2D(16, 16, TextureFormat.RGBA32, false);
         MapData mapData = mapDataGenerator();
         MapDisplay display = FindObjectOfType<MapDisplay>();
@@ -51,7 +50,7 @@ public class MapGenerator : MonoBehaviour
         switch (generationMode)
         {
             case GenerationMode.Floors:
-                if (rooms != null)
+                if (rooms is not null)
                 {
                     CleanUp(rooms, false);
                 }         
@@ -61,7 +60,7 @@ public class MapGenerator : MonoBehaviour
                 }
                 break;
             case GenerationMode.FloorsAndWalls:
-                if (rooms != null)
+                if (rooms is not null)
                 {
                     CleanUp(rooms, false);
                     CleanUp(buildObjects, false);
@@ -71,6 +70,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     display.DrawMesh(mesh, texture);
                 }          
+
                 objectsPlacer.PlaceObjects(mapData.roomMaps);
                 //CleanUp(riddles, true);
                 riddles = null;
@@ -90,7 +90,7 @@ public class MapGenerator : MonoBehaviour
     {
         DLAGenerator DLA = new DLAGenerator();
         RandomWalkGenerator RWG = new RandomWalkGenerator();
-        Dungeon dungeonInfo = new Dungeon(this.dungeonSizeX, this.dungeonSizeY, this.roomDensity, this.maxRoomSizeX, this.maxRoomSizeY, 0, this.minimalRoomSize);
+        Dungeon dungeonInfo = new Dungeon(this.dungeonSizeX, this.dungeonSizeY, this.maxRoomSizeX, this.maxRoomSizeY, this.minimalRoomSize);
         List<bool[,]> dungeonMap = new List<bool[,]>();
         List<Room> roomMaps = new List<Room>();
         switch (algorithmType)
@@ -103,11 +103,6 @@ public class MapGenerator : MonoBehaviour
                 break;
             case AlgorithmType.RandomWalkAlgorithm:  
                 roomMaps.Add(RWG.DrunkardWalkGenerator(dungeonInfo, iterations, false));
-                break;
-            case AlgorithmType.RandomRoomPlacement:
-                dungeonMap = RandomRoomPlacementGenerator.Generator(dungeonInfo);
-                roomMaps = RandomRoomPlacementGenerator.RandomRoomPlacer(dungeonMap,dungeonInfo);
-                
                 break;
             default:
                 break;
@@ -123,18 +118,17 @@ public class MapGenerator : MonoBehaviour
 
             foreach (var item in objects)
             {
-                if (item != null && item.transform.position == Vector3.zero)
+                if (item is not null && item.transform.position == Vector3.zero)
                 {
                     Destroy(item);
                 }
             }
-
         }
         else
         {
             foreach (var item in objects)
             {
-                if (item != null)
+                if (item is not null)
                 {
                     Destroy(item);
                 }

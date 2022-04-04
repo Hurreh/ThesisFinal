@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameLogicScript : MonoBehaviour
 {
     public static GameLogicScript current;
+    public MapGenerator mapGenerator;
     private GameObject[] riddles;
     public GameObject player;
     public bool allSolved;
@@ -18,9 +19,11 @@ public class GameLogicScript : MonoBehaviour
         current = this;
     }
     private void Start()
-    {
+    {    
         allSolved = false;
         levelLoading = true;
+        mapGenerator.DrawMapInEditor();
+        
     }
     // Update is called once per frame
     void Update()

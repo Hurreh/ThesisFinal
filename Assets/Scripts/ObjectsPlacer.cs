@@ -13,14 +13,6 @@ public class ObjectsPlacer : MonoBehaviour
 
     int doorCount = 0;
 
-    private void Start()
-    {
-        
-    }
-    private void Awake()
-    {
-       
-    }
 
     public void PlaceObjects(List<Room> roomMaps)
     {
@@ -32,18 +24,17 @@ public class ObjectsPlacer : MonoBehaviour
             float topLeftX = (width - 1) / -2f;
             float topLeftZ = (height - 1) / -2f;
 
-            MeshData meshData = new MeshData(width, height);
 
             foreach (var tile in roomMaps[i].Tiles)
             {
-                PlacementDetails(tile, topLeftX, topLeftZ);
+                PlacementDetails(tile, topLeftX, topLeftZ, 2);
             }
             
 
         }
     }
 
-    public void PlacementDetails(Tile tile, float tlx, float tlz)
+    public void PlacementDetails(Tile tile, float tlx, float tlz, float scale)
     {
         switch (tile.TileType)
         {
@@ -122,6 +113,7 @@ public class ObjectsPlacer : MonoBehaviour
             Instantiate(simpleDoor, coords, rotation);
             if (doorCount == 0)
             {
+                //Teleport player to the first door.
                 var player = GameObject.FindGameObjectWithTag("Player");
                 if (tile.TileType == TileType.L)
                     player.transform.position = new Vector3(coords.x + 1, coords.y, coords.z);

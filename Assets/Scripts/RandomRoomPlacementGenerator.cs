@@ -12,7 +12,7 @@ public class RandomRoomPlacementGenerator
         int dungeonSize = dungeon.DungeonSizeX * dungeon.DungeonSizeY;
         float averageRoomSize = (dungeon.maxRoomSizeX / 2) * (dungeon.maxRoomSizeY / 2);
         float howManyToFill = dungeonSize / averageRoomSize;
-        numberOfRooms = Mathf.CeilToInt(howManyToFill / ((1f / dungeon.RoomDensity) * 1000f));
+        numberOfRooms = Mathf.CeilToInt(howManyToFill / ((1f / 50) * 1000f));
         return numberOfRooms;
     }
     public static List<bool[,]> Generator(Dungeon dungeon)
@@ -72,11 +72,9 @@ public class RandomRoomPlacementGenerator
             }
         }
         roomsSorted = listRooms(rooms, fullRooms);
-        //roomsSorted = addCorridors(roomsSorted);
         for (int i = 0; i < roomsSorted.Count(); i++)
         {
             roomsSorted[i] = Utilities.DefineWalls(roomsSorted[i]);
-            //roomsSorted[i] = DefineObjects(roomsSorted[i], 0 ,0 ,0);
         }
 
         return roomsSorted;
