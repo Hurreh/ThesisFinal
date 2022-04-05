@@ -86,6 +86,7 @@ public class MapGenerator : MonoBehaviour
         }
 
     }
+    
     public MapData mapDataGenerator()
     {
         DLAGenerator DLA = new DLAGenerator();
