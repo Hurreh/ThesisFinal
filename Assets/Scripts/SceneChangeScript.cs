@@ -46,7 +46,9 @@ public class SceneChangeScript : MonoBehaviour
         var ato = this.algorithmTypeObj.GetComponent<TextMeshProUGUI>();
 
         gmo.text = generationModes[0];
+        generationMode = generationModes[0];
         ato.text = algorithmTypes[0];
+        algorithmType = algorithmTypes[0];
 
         var dsX = this.dungeonSizeXObj.GetComponent<Slider>();
         var dsY = this.dungeonSizeXObj.GetComponent<Slider>();
@@ -55,6 +57,10 @@ public class SceneChangeScript : MonoBehaviour
         dsX.minValue = 50;
         dsY.maxValue = 250;
         dsY.minValue = 50;
+
+        dungeonSizeX = 50;
+        dungeonSizeY = 50;
+        iterations = 300;
 
     }
 
@@ -70,6 +76,7 @@ public class SceneChangeScript : MonoBehaviour
         {
             genIndex = 0;
             gmo.text = generationModes[genIndex];
+            
         }
             
         else
@@ -77,7 +84,7 @@ public class SceneChangeScript : MonoBehaviour
             gmo.text = generationModes[genIndex + 1];
             genIndex++;
         }
-                 
+        generationMode = gmo.text;
     }
     public void changeAlgorithmMode()
     {
@@ -93,6 +100,7 @@ public class SceneChangeScript : MonoBehaviour
             ato.text = algorithmTypes[algIndex + 1];
             algIndex++;
         }
+        algorithmType = ato.text;
     }
     public void changeDungeonSizeX(float size)
     {

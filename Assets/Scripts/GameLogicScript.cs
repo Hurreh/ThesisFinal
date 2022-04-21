@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MapGenerator;
 
 public class GameLogicScript : MonoBehaviour
 {
     public static GameLogicScript current;
+    public AudioSource source;
+    public AudioClip clip;
     public MapGenerator mapGenerator;
     private GameObject[] riddles;
     public GameObject player;
@@ -20,8 +23,11 @@ public class GameLogicScript : MonoBehaviour
     }
     private void Start()
     {    
-        allSolved = false;
-        levelLoading = true;
+        mapGenerator.dungeonSizeX = SceneChangeScript.dungeonSizeX;
+        mapGenerator.dungeonSizeY = SceneChangeScript.dungeonSizeY;
+        mapGenerator.iterations = SceneChangeScript.iterations;
+        mapGenerator.generationMode = Enum.Parse<GenerationMode>(SceneChangeScript.generationMode);
+        mapGenerator.algorithmType = Enum.Parse<AlgorithmType>(SceneChangeScript.algorithmType);
         mapGenerator.DrawMapInEditor();
         
     }
@@ -37,6 +43,7 @@ public class GameLogicScript : MonoBehaviour
         {
             this.riddles = null;
             this.riddles = GameObject.FindGameObjectsWithTag("Riddle");
+            Debug.Log(this.riddles.Length);
             int solvedRiddleCount = 0;
 
             for (int i = 0; i < this.riddles.Length; i++)
@@ -50,7 +57,7 @@ public class GameLogicScript : MonoBehaviour
             {
                 allSolved = true;
                 riddlesSolved();
-                Debug.Log("Solved :DD");
+                source.PlayOneShot(clip);
             }
         }
         

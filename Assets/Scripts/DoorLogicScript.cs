@@ -36,7 +36,7 @@ public class DoorLogicScript : MonoBehaviour
     {
         if (doorCount == 1)
         {
-            if (material is not null)
+            if (material != null)
             {
                 material.materials[0].color = Color.green;
             }
