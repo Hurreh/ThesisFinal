@@ -43,7 +43,9 @@ public class MapGenerator : MonoBehaviour
         MapData mapData = mapDataGenerator();
         MapDisplay display = FindObjectOfType<MapDisplay>();
         ObjectsPlacer objectsPlacer = FindObjectOfType<ObjectsPlacer>();
+
         GameObject[] rooms = GameObject.FindGameObjectsWithTag("room");
+
         GameObject[] buildObjects = GameObject.FindGameObjectsWithTag("Building");
         GameObject[] riddles = GameObject.FindGameObjectsWithTag("Riddle");
         List<MeshData> meshDatas = new List<MeshData>(MeshGenerator.GenerateDungeonMesh(mapData.roomMaps));

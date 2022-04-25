@@ -21,7 +21,7 @@ public class DoorLogicScript : MonoBehaviour
             GameLogicScript.current.onRiddlesSolvedEvent += activatePortal;
         }
         
-
+            
     }
 
     private void OnTriggerEnter(Collider other)
