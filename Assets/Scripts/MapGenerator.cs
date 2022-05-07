@@ -60,6 +60,8 @@ public class MapGenerator : MonoBehaviour
                 {
                     display.DrawMesh(mesh, texture);
                 }
+                var player = GameObject.FindGameObjectWithTag("Player");
+                player.transform.position = new Vector3(0, 20, 0);
                 break;
             case GenerationMode.FloorsAndWalls:
                 if (rooms is not null)

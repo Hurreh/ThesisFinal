@@ -834,6 +834,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b0ff41c9-632e-4c19-aee4-e41cd78f4a8b",
+                    "path": "<OculusTouchController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "150f414f-61bf-47b1-b4f8-f772a2a40565",
                     "path": "<XRController>{RightHand}/trigger",
                     "interactions": "",

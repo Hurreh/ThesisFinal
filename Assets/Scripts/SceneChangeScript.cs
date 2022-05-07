@@ -17,6 +17,8 @@ public class SceneChangeScript : MonoBehaviour
     public GameObject dungeonSizeYObj;
     public GameObject sizeX;
     public GameObject sizeY;
+    public GameObject iterationsObj;
+    public GameObject iterationsCounter;
 
     //This we pass.
     public static string generationMode;
@@ -25,7 +27,7 @@ public class SceneChangeScript : MonoBehaviour
     public static int dungeonSizeX;
     [Range(50, 250)]
     public static int dungeonSizeY;
-    [Range(300, 600)]
+    [Range(50, 300)]
     public static int iterations;
 
     private int genIndex = 0;
@@ -60,7 +62,7 @@ public class SceneChangeScript : MonoBehaviour
 
         dungeonSizeX = 50;
         dungeonSizeY = 50;
-        iterations = 300;
+        iterations = 50;
 
     }
 
@@ -113,6 +115,12 @@ public class SceneChangeScript : MonoBehaviour
         var sizeY = this.sizeY.GetComponent<TextMeshProUGUI>();
         dungeonSizeY = (int)size;
         sizeY.text = size.ToString();
+    }
+    public void changeIterations(float amount)
+    {
+        var iterationsCounter = this.iterationsCounter.GetComponent<TextMeshProUGUI>();
+        iterations = (int)amount;
+        iterationsCounter.text = amount.ToString();
     }
     public void ChangeScene()
     {

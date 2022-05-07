@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.47884, g: 0.8001845, b: 0.90072787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 286495199}
   - component: {fileID: 286495198}
-  - component: {fileID: 286495200}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Player
@@ -174,14 +173,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &286495200
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286495197}
-  m_Enabled: 1
 --- !u!1 &462957460
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LineWidth: 0.02
+  m_LineWidth: 0.0081
   m_OverrideInteractorLineLength: 1
   m_LineLength: 10
   m_WidthCurve:
@@ -973,7 +964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 0}
-  m_MoveSpeed: 1
+  m_MoveSpeed: 1.4
   m_EnableStrafe: 1
   m_UseGravity: 1
   m_GravityApplicationMode: 0
@@ -1125,12 +1116,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16edb85d1810d9343a651d0d136f141d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 1484072473}
   source: {fileID: 1484072474}
-  clip: {fileID: 8300000, guid: 1a5a6cdb9900e564fad513794e47a961, type: 3}
+  clipWin: {fileID: 8300000, guid: 1a5a6cdb9900e564fad513794e47a961, type: 3}
+  clipFail: {fileID: 8300000, guid: 9965868b1c9ec2545bfe65e80915344e, type: 3}
   mapGenerator: {fileID: 1516006185}
   player: {fileID: 0}
   allSolved: 0
   levelLoading: 0
+  isLevelFailed: 0
 --- !u!4 &1266665108
 Transform:
   m_ObjectHideFlags: 0
@@ -1309,7 +1303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LineWidth: 0.02
+  m_LineWidth: 0.0082
   m_OverrideInteractorLineLength: 1
   m_LineLength: 10
   m_WidthCurve:
@@ -1783,7 +1777,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.353
   m_Pitch: 1
   Loop: 0
   Mute: 0
