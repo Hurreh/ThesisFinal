@@ -135,7 +135,7 @@ public class ObjectsPlacer : MonoBehaviour
         else if (tile.HasRiddle)
         {
             riddle.name = "Riddle" + name;
-            Instantiate(riddle, new Vector3(coords.x , coords.y, coords.z ), rotation);
+            Instantiate(riddle, new Vector3(coords.x , 0.25f, coords.z ), rotation);
         }
         else if(tile.TileType != TileType.MID)
         {
